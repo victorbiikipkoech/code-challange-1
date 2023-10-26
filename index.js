@@ -1,20 +1,26 @@
 
-function giveGrade(a) {
-    let result;
-    if(a < 40) {
-        result = 'E';
-    if(a > 40 && a < 49) {
-        result = 'D';
-    if(a > 49 && a < 59) {
-        result = 'C';
-    if(a > 59 && a < 79 ) {
-        result = 'B';
-    if(a > 79 && a < 100) {
-        result = 'A'; 
-    }  else {
-        result = 'NO grade'
+function checkSpeed(speed) {
+    const speedLimit = 70;
+    const demeritPointIncrement = 5;
+  
+    if (isNaN(speed)) {
+      return "Please enter a valid number.";
+    } else if (speed < speedLimit) {
+      return "Ok";
+    } else {
+      const excessSpeed = speed - speedLimit;
+      const demeritPoints = Math.floor(excessSpeed / demeritPointIncrement);
+  
+      if (demeritPoints > 12) {
+        return "License suspended!";
+      } else {
+        return `Demerit points: ${demeritPoints}`;
+      }
     }
-    
-        return result;
-}
-console.log(giveGrade(50)));
+  }
+  
+  // Example usage:
+  const speed = 200;
+  const result = checkSpeed(speed);
+  console.log(result); 
+  
